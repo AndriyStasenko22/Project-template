@@ -9,8 +9,8 @@
   "author": "Andriy Stasenko",
   "license": "ISC",
   "devDependencies": {
-    "animate.css": "^3.5.2",
-    "browser-sync": "^2.18.8",
+    "bower-update": "^0.2.0",
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
@@ -19,10 +19,7 @@
     "gulp-include": "^2.3.1",
     "gulp-less": "^3.3.2",
     "gulp-uglifyjs": "^0.6.2",
-    "gulp-util": "^3.0.8",
-    "inputmask": "^3.3.7"
+    "gulp-util": "^3.0.8"
   },
-  "dependencies": {
-    "owl.carousel": "^2.2.0"
-  }
+  "dependencies": {}
 }

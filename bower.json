@@ -27,5 +27,6 @@
     "jqueryui-touch-punch": "*"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7"
   }
 }

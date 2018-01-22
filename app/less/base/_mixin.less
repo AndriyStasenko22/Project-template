@@ -1,7 +1,33 @@
-// Кольори
+.flex{
+  display: flex;
+  flex-flow: row wrap;
+}
 
-@base_color: #e74c3c;
+.horizontal_align{
+  &:extend(.flex);
+  justify-content: center;
+}
 
-// Шрифти
+.vertical_align{
+  &:extend(.flex);
+  align-items: center;
+}
 
-@Roboto-Regular: "Roboto-Regular";
+.center_align{
+  &:extend(.horizontal_align, .vertical_align);
+}
+
+.table_show{
+  &:extend(.flex);
+  justify-content: flex-start;
+}
+
+.bgi-cover{
+  background: no-repeat;
+  background-size: cover;
+}
+
+.bgi-center{
+  &:extend(.bgi-cover);
+  background-position: center;
+}

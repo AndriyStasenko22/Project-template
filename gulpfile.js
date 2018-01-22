@@ -1,18 +1,18 @@
-var gulp         = require('gulp'), // Подключаем gulp
-    less         = require('gulp-less'), // Подключаем gulp-less
-    browserSync  = require('browser-sync'), // Подключаем Browser Sync
-    concat       = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
-    uglify       = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
+var gulp = require('gulp'), // Подключаем gulp
+    less = require('gulp-less'), // Подключаем gulp-less
+    browserSync = require('browser-sync'), // Подключаем Browser Sync
+    concat = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
+    uglify = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
     autoprefixer = require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
-    cssnano      = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
-    include      = require("gulp-include"); // Подключаем gulp-include (для подгрузки htlm блоков)
-rename      = require('gulp-rename');
-imagemin    = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
-    pngquant    = require('imagemin-pngquant'); // Подключаем библиотеку для работы с png
-del = require('del');
+    cssnano = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
+    include = require("gulp-include"), // Подключаем gulp-include (для подгрузки htlm блоков)
+    // rename = require('gulp-rename'),
+    imagemin = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
+    pngquant = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
+    del = require('del');
 
 // Таск "browser-sync"
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function () {
     browserSync({ // Выполняем browser Sync
         server: { // Определяем параметры сервера
             baseDir: 'app' // Директория для сервера - app
@@ -22,10 +22,10 @@ gulp.task('browser-sync', function() {
 });
 
 // Таск "LESS"
-gulp.task('less', function(){
+gulp.task('less', function () {
     return gulp.src('app/less/main.less') // Источник
         .pipe(less())
-        .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Префиксы
+        .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true})) // Префиксы
         .pipe(cssnano())
         .pipe(gulp.dest('app/css')) // Результат в папку app/css
         .pipe(gulp.dest('../frontend/web/css/')) // Результат в папку app/css
@@ -33,7 +33,7 @@ gulp.task('less', function(){
 });
 
 // Таск libcss - збирає всі css-файли плагінів в один файл
-gulp.task('libcss', function(){
+gulp.task('libcss', function () {
     return gulp.src('app/less/base/libsCss.less') // Источник
         .pipe(less())
         .pipe(cssnano())
@@ -41,7 +41,7 @@ gulp.task('libcss', function(){
 });
 
 // Таск "include"
-gulp.task('include', function() {
+gulp.task('include', function () {
     return gulp.src("app/page/*.html") // Источники
         .pipe(include())
         .pipe(gulp.dest("app"));
@@ -49,16 +49,16 @@ gulp.task('include', function() {
 });
 
 // Таск "scripts"
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
     return gulp.src([ // Берем все необходимые библиотеки
         'app/libs/jquery/dist/jquery.min.js', // jQuery
-        'app/libs/bootstrap/dist/js/bootstrap.min.js', // Bootsrap
-        'app/libs/slick-carousel/slick/slick.min.js', //SlickSlider
-        'app/libs/owl.carousel/dist/owl.carousel.min.js', //OwlCarousel
+        // 'app/libs/bootstrap/dist/js/bootstrap.min.js', // Bootsrap
+        // 'app/libs/slick-carousel/slick/slick.min.js', //SlickSlider
+        // 'app/libs/owl.carousel/dist/owl.carousel.min.js', //OwlCarousel
         // 'app/libs/fancybox/dist/jquery.fancybox.min.js', //FancyBox 3.2
         // 'app/libs/fancybox-2.1.7/source/jquery.fancybox.js', //FancyBox
-        'app/libs/jquery-mousewheel/jquery.mousewheel.min.js',
-        'app/libs/wow/dist/wow.min.js', // Wow.js
+        // 'app/libs/jquery-mousewheel/jquery.mousewheel.min.js',
+        // 'app/libs/wow/dist/wow.min.js', // Wow.js
         'app/libs/jquery-ui/jquery-ui.min.js', // Price
         'app/libs/jqueryui-touch-punch/jquery.ui.touch-punch.min.js', // Touch-Punch for price
         // 'app/libs/jquery-touchswipe/jquery.touchSwipe.min.js', // TouchSwipe for product slider
@@ -69,11 +69,11 @@ gulp.task('scripts', function() {
 });
 
 
-gulp.task('clean', function(){
-    return del(['../frontend/web/img/**', '!../frontend/web/img'], {force:true});
+gulp.task('clean', function () {
+    return del(['../frontend/web/img/**', '!../frontend/web/img'], {force: true});
 });
 // ['clean']
-gulp.task('img',['clean'], function() {
+gulp.task('img', ['clean'], function () {
     return gulp.src('app/img/**/*') // Берем все изображения из app
         .pipe(imagemin({ // Сжимаем их с наилучшими настройками
             interlaced: true,
@@ -85,7 +85,7 @@ gulp.task('img',['clean'], function() {
 });
 
 // Таск "watch"
-gulp.task('watch', ['less', 'include'], function() {
+gulp.task('watch', ['less', 'include'], function () {
     gulp.watch('app/less/**/*.less', ['less']); // Наблюдение за less файлами
     gulp.watch('app/include/*.html', ['include', browserSync.reload]); // Наблюдение за HTML файлами в корне проекта
     gulp.watch('app/page/*.html', ['include', browserSync.reload]); // Наблюдение за HTML файлами в корне проекта

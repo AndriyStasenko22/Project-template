@@ -1,6 +1,6 @@
 {
   "name": "complife",
-  "description": "My Luxic",
+  "description": "TaskManger",
   "main": "index.js",
   "authors": [
     "Andriy Stasenko"
@@ -22,16 +22,10 @@
     "fancybox": "fancyBox#^3.1.20",
     "font-awesome": "fontawesome#^4.7.0",
     "inputmask": "^3.3.7",
-    "jquery-mixitup": "^3.1.11",
-    "jquery-mousewheel": "^3.1.13",
     "jquery-ui": "^1.12.1",
     "jquery": "^3.2.1",
-    "slick-carousel": "^1.6.0",
-    "wow": "^1.1.2",
     "jqueryui-touch-punch": "*"
   },
   "devDependencies": {
-    "jquery-touchswipe": "^1.6.18",
-    "waypoints": "^4.0.1"
   }
 }

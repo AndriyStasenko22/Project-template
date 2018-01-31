@@ -6,7 +6,6 @@ var gulp = require('gulp'), // Подключаем gulp
     autoprefixer = require('gulp-autoprefixer'), // Подключаем библиотеку для автоматического добавления префиксов
     cssnano = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
     include = require("gulp-include"); // Подключаем gulp-include (для подгрузки htlm блоков)
-    // rename = require('gulp-rename'),
     // imagemin = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
     // pngquant = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
     // del = require('del');
